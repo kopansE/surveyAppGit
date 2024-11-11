@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import { connect } from 'react-redux';
-import * as actions from '../actions'
+import { connect } from "react-redux";
+import * as actions from "../actions";
 
 import Header from "./Header";
-const DashBoard = () => <h2>DashBoard</h2>; 
+import Landing from "./Landing";
+const DashBoard = () => <h2>DashBoard</h2>;
 const SurveyNew = () => <h2>SurveyNew</h2>;
-const Landing = () => <h2>Landing</h2>;
-
 /*  -------------------------------------------------
     <Route path="/" component = {Landing} />
     <Route path="/surveys" component = {DashBoard} /> 
@@ -17,7 +16,7 @@ const Landing = () => <h2>Landing</h2>;
     solution: exact/exact={true} keyword
     */
 class App extends Component {
-  componentDidMount(){
+  componentDidMount() {
     this.props.fetchUser();
   }
 
@@ -38,4 +37,3 @@ class App extends Component {
 }
 
 export default connect(null, actions)(App);
-
