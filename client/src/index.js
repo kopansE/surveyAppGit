@@ -1,14 +1,22 @@
-// 1) Import ReactDOM library
+import materializeCSS from 'materialize-css/dist/css/materialize.min.css'; // no need for relative path -> if it doesnt have a relative path prefix the compiler searches in node_module 
+import React from 'react';
 import ReactDOM from "react-dom/client";
- 
-// 2) Import App component as usual
+import {Provider} from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import { thunk as reduxThunk } from 'redux-thunk';
 import App from './components/App';
- 
-// 3) Get a reference to the div with ID root
+import reducers from './reducers';
+
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
+
 const el = document.getElementById("root");
  
-// 4) Tell React to take control of that element
+// Tell React to take control of that element
 const root = ReactDOM.createRoot(el);
  
-// 5) Show the component on the screen
-root.render(<App />);
+// Show the component on the screen
+root.render(
+    <Provider store ={store}> 
+        <App /> 
+    </Provider>
+);
